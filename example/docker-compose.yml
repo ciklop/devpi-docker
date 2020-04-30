@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  devpi:
+    image: ciklop/devpi:latest
+    ports:
+      - 3141:3141
+    volumes:
+      - devpi_data:/data:rw
+
+volumes:
+  devpi_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/devpi/volume
