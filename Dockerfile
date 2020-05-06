@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8 AS open
 
 RUN pip install devpi-server devpi-client devpi-web && \
     mkdir -p /etc/devpi && \
@@ -14,3 +14,6 @@ VOLUME /data
 EXPOSE 3141
 
 CMD [ "devpi-server", "-c", "/etc/devpi/config.yml"]
+
+FROM open
+RUN pip install devpi-lockdown
