@@ -16,4 +16,6 @@ EXPOSE 3141
 CMD [ "devpi-server", "-c", "/etc/devpi/config.yml"]
 
 FROM open
+USER ROOT
 RUN pip install devpi-lockdown
+USER devpi
